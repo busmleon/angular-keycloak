@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  KEYCLOAK_URL: 'http://localhost:8080/auth',
+  KEYCLOAK_REALM: 'APP_REALM',
+  KEYCLOAK_CLIENT: 'FrontendClient',
+  BACKEND_URL: 'http://localhost:3000/db'
 };
 
 /*
