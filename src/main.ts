@@ -20,8 +20,6 @@ keycloak.init({ onLoad: "login-required" }).then((auth) => {
 
   if (!auth) {
     window.location.reload();
-  } else {
-    console.log("Authenticated");
   }
 
   platformBrowserDynamic().bootstrapModule(AppModule)
