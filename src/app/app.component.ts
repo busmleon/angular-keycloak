@@ -12,16 +12,9 @@ const baseURL = environment.BACKEND_URL;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(private httpClient: HttpClient) {
 
-  }
-  ngOnInit(): void {
-    if (environment.production) {
-      if (location.protocol === 'http:') {
-        window.location.href = location.href.replace('http', 'https');
-      }
-    }
   }
   onGetTestobjects(area: HTMLTextAreaElement): void {
     this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
