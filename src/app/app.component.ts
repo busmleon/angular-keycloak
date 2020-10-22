@@ -31,7 +31,7 @@ export class AppComponent {
         area.value = temp;
       });
   }
-  onGetTestobjects2(area: HTMLTextAreaElement): void {
+  onGetTestobjects2(area2: HTMLTextAreaElement): void {
     this.httpClient.get<User[]>(baseURL + '/admin', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
       catchError((err) => {
         if (err.status == 403)
@@ -43,7 +43,7 @@ export class AppComponent {
         var temp = '';
         for (let user of res)
           temp += JSON.stringify(user);
-        area.value = temp;
+        area2.value = temp;
       });
   }
 }
