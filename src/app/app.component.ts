@@ -17,7 +17,7 @@ export class AppComponent {
 
   }
   onGetTestobjects(area: HTMLTextAreaElement): void {
-    this.httpClient.get<User[]>(baseURL + '/user').pipe(
+    this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
       catchError((err) => {
         if (err.status == 403)
           alert('You don\'t have the permission to do that!')
