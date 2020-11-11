@@ -19,10 +19,10 @@ export class AppComponent {
 
   login(username: HTMLTextAreaElement, password: HTMLTextAreaElement): void {
     this.loginService.login(username.value, password.value)
-    console.log('token:' + this.loginService.getToken())
   }
 
   onGetTestobjects(area: HTMLTextAreaElement): void {
+    console.log('token:' + this.loginService.getToken())
     this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + this.loginService.getToken() } }).pipe(
       catchError((err) => {
         if (err.status == 403)
@@ -38,6 +38,7 @@ export class AppComponent {
       });
   }
   onGetTestobjects2(area2: HTMLTextAreaElement): void {
+    console.log('token:' + this.loginService.getToken())
     this.httpClient.get<User[]>(baseURL + '/admin', { headers: { 'Authorization': 'bearer ' + this.loginService.getToken() } }).pipe(
       catchError((err) => {
         if (err.status == 403)
