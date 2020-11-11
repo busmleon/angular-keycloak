@@ -1,4 +1,12 @@
 <div>
+  <textarea #username></textarea>
+  <textarea #password></textarea>
+  <br>
+  <button (click)="login(username,password)">Login</button>
+</div>
+<br>
+<br>
+<div>
   <textarea readonly #area></textarea>
   <br>
   <button (click)="onGetTestobjects(area)">Get Users</button>

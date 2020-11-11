@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { User } from './Entities/user';
@@ -15,12 +15,14 @@ const baseURL = environment.BACKEND_URL;
 })
 export class AppComponent {
   constructor(private httpClient: HttpClient, private loginService: LoginService) {
-    console.log('aufruf start')
-    this.loginService.login('employee2', '1234')
-    console.log('aufruf ende')
   }
+
+  login(username: HTMLTextAreaElement, password: HTMLTextAreaElement): void {
+    this.loginService.login(username.value, password.value)
+  }
+
   onGetTestobjects(area: HTMLTextAreaElement): void {
-    this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
+    this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + this.loginService.getToken() } }).pipe(
       catchError((err) => {
         if (err.status == 403)
           alert('You don\'t have the permission to do that!')
@@ -35,7 +37,7 @@ export class AppComponent {
       });
   }
   onGetTestobjects2(area2: HTMLTextAreaElement): void {
-    this.httpClient.get<User[]>(baseURL + '/admin', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
+    this.httpClient.get<User[]>(baseURL + '/admin', { headers: { 'Authorization': 'bearer ' + this.loginService.getToken() } }).pipe(
       catchError((err) => {
         if (err.status == 403)
           alert('You don\'t have the permission to do that!')
