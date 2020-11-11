@@ -21,7 +21,7 @@ export class LoginService {
       // localStorage.setItem("ang-refresh-token", JSON.parse(JSON.stringify(loginSuccessResponse)).refresh_token)
     }, loginErrorResponse => {
       console.error('Login Error Response', loginErrorResponse);
-    })
+    }).unsubscribe()
   }
 
   public getToken(): string {

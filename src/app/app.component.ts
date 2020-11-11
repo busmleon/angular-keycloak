@@ -19,6 +19,7 @@ export class AppComponent {
 
   login(username: HTMLTextAreaElement, password: HTMLTextAreaElement): void {
     this.loginService.login(username.value, password.value)
+    console.log('token:' + this.loginService.getToken())
   }
 
   onGetTestobjects(area: HTMLTextAreaElement): void {
