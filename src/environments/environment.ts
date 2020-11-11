@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  KEYCLOAK_URL: 'https://admin.busmleon.de/auth',
+  // KEYCLOAK_URL: 'https://admin.busmleon.de/auth',
+  KEYCLOAK_URL: 'http://localhost:80/auth',
   KEYCLOAK_REALM: 'APP_REALM',
   KEYCLOAK_CLIENT: 'FrontendClient',
   BACKEND_URL: 'https://backend.busmleon.de/db'

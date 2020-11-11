@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { User } from './Entities/user';
 import { environment } from '../environments/environment';
+import { LoginService } from './services/login.service';
 
 const baseURL = environment.BACKEND_URL;
 
@@ -14,7 +15,7 @@ const baseURL = environment.BACKEND_URL;
 })
 export class AppComponent {
   constructor(private httpClient: HttpClient) {
-
+    LoginService.login(this.httpClient)
   }
   onGetTestobjects(area: HTMLTextAreaElement): void {
     this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
