@@ -14,8 +14,10 @@ const baseURL = environment.BACKEND_URL;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private httpClient: HttpClient) {
-    LoginService.login(this.httpClient)
+  constructor(private httpClient: HttpClient, private loginService: LoginService) {
+    console.log('aufruf start')
+    this.loginService.login('employee2', '1234')
+    console.log('aufruf ende')
   }
   onGetTestobjects(area: HTMLTextAreaElement): void {
     this.httpClient.get<User[]>(baseURL + '/user', { headers: { 'Authorization': 'bearer ' + localStorage.getItem('ang-token') } }).pipe(
