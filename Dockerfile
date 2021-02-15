@@ -1,4 +1,5 @@
 FROM node:lts-alpine AS node
+USER root
 ENV PATH /app/node_modules/.bin:$PATH
 WORKDIR /app
 COPY . /app/
